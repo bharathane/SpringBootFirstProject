@@ -13,10 +13,12 @@ A manager table is prefilled for testing purposes to validate manager IDs.
 </tr>
 </table>
 
-##Get all user 
+## Get all user 
 <u>methos</u>: Get
- - <u>get all users</u> : end point **/users**
- **/users**
+ - <u>get all users end point </u>: **/users** <br />
+ **Sample Response**
+ <br />
+ 
    ```sample response
    [
     {
@@ -37,10 +39,10 @@ A manager table is prefilled for testing purposes to validate manager IDs.
    
    ```
 
-   <hr/
+   
 ## to add new user
 <u>methos</u>: Post
- - <u>adds new user in db</u> :  end point **/users**
+ - <u>adds new user in db end point </u>  **/users**
 
   ``` Sample Request body
         {
@@ -52,6 +54,7 @@ A manager table is prefilled for testing purposes to validate manager IDs.
             }
         }
   ```
+- <u>Sample Response</u>
  
    ```sample response
         [
@@ -72,6 +75,109 @@ A manager table is prefilled for testing purposes to validate manager IDs.
        ]
    
    ```
+   ## Get Specific user
+  <u>methos</u>: Post
+ - <u>get specific user form db based on mobileNumber or userId</u> **/users**
+  - <u>Sample Request with optional keys</u>
+  ```sample request
+      {
+        "userId": "550e8400-e29b-41d4-a716-446655478400",
+        "mobileNumber":"8745126395"    
+      }
+  ```
+  - <u>Sample Response</u>
+
+  ```sample response
+    [
+            {
+            "userId": "550e8400-e29b-41d4-a716-446655478400",
+            "fullName": "Bharath Manda",
+            "panNum": "ftjn4087k",
+            "mobileNumber": "8745126395",
+            "createdAt": "2045-09-24 10:15:00",
+            "updatedAt": "2024-07-27 16:26:18.485575",
+            "isActive": true,
+            "manager": {
+                "managerId": "550e8400-e29b-41d4-a716-446655477700",
+                "name": "Mounika"
+            }
+        },
+    ]
+  ```
+  - <u>based on manager Id</u>
+  ```sample request
+    {
+      "manager":{
+      "managerId":"550e8400-e29b-41d4-a716-446655477700"
+        }
+    }
+  ```
+ - <u>Sample Response</u>
+
+ ```
+[
+        {
+            "userId": "550e8400-e29b-41d4-a716-446655478400",
+            "fullName": "Bharath Manda",
+            "panNum": "ftjn4087k",
+            "mobileNumber": "8745126395",
+            "createdAt": "2045-09-24 10:15:00",
+            "updatedAt": "2024-07-27 16:26:18.485575",
+            "isActive": true,
+            "manager": {
+                "managerId": "550e8400-e29b-41d4-a716-446655477700",
+                "name": "Mounika"
+            }
+        },
+       ...
+       ]
+```
+ ## delete user
+  <u>methos</u>: Post
+ - <u>delete user based on userId or unique mobile number</u> **/deleteUser**
+  - <u>Sample Request with optional keys</u>
+   ```sample request
+      {
+        "userId": "550e8400-e29b-41d4-a716-446655478400",
+        "mobileNumber":"8745126395"    
+      }
+  ```
+- <u>Sample Response</u>
+```user deleted successfully```
+
+## update user
+ <u>update bulk users or a specific user</u> **/bulkUpdate**
+ - <u>Sample Request for bulk update</u>
+  ```sample request
+      {
+        "userIds": ["550e8400-e29b-41d4-a716-446655478400","550e8400-e29b-41d4-a716-446655864400"],
+        "userObj":{
+                  
+                  "manager":{
+                            "managerId": "550e8400-e29b-41d4-a716-446655477700"
+                            }
+                  }    
+      }
+  ```
+- <u>Sample Response</u>
+```Updated Sucessfully```
+
+- <u>Sample Request for specific user updagte</u>
+ ```sample request
+      {
+        "userIds": ["550e8400-e29b-41d4-a716-446655478400"],
+        "userObj":{
+                  "fullName": "Bharath Manda",
+                  "panNum": "ftjn4087k",
+                  "mobileNumber": "8745126395",
+                  "manager":{
+                            "managerId": "550e8400-e29b-41d4-a716-446655477700"
+                            }
+                  }    
+      }
+  ```
+- <u>Sample Response</u>
+```Updated Sucessfully```
 
 ## Demo
 Here is a working live demo :  Will  add
