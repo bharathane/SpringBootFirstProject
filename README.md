@@ -75,9 +75,16 @@ A manager table is prefilled for testing purposes to validate manager IDs.
        ]
    
    ```
+   #### possible errors
+  ```ENTER YOUR FULL NAME```
+  ```Plase Enter a mobile number```
+  ```Mobile number must be exactly 10 digits```
+  ```please enter a PAN number```
+  ```Please enter a valid manager id```
+  
    ## Get Specific user
   <u>methos</u>: Post
- - <u>get specific user form db based on mobileNumber or userId</u> **/users**
+ - <u>get specific user form db based on mobileNumber or userId</u> **/specificUser**
   - <u>Sample Request with optional keys</u>
   ```sample request
       {
@@ -145,6 +152,10 @@ A manager table is prefilled for testing purposes to validate manager IDs.
 - <u>Sample Response</u>
 ```user deleted successfully```
 
+#### possible errors
+```No Users Available with this userId```
+```No Users Available with this mobileNumber```
+
 ## update user
  <u>update bulk users or a specific user</u> **/bulkUpdate**
  - <u>Sample Request for bulk update</u>
@@ -162,7 +173,7 @@ A manager table is prefilled for testing purposes to validate manager IDs.
 - <u>Sample Response</u>
 ```Updated Sucessfully```
 
-- <u>Sample Request for specific user updagte</u>
+- <u>Sample Request for specific user update</u>
  ```sample request
       {
         "userIds": ["550e8400-e29b-41d4-a716-446655478400"],
@@ -178,6 +189,13 @@ A manager table is prefilled for testing purposes to validate manager IDs.
   ```
 - <u>Sample Response</u>
 ```Updated Sucessfully```
+
+#### possible errors
+```some details are missing```
+```You can Update List of users individual basis only and not in bulk.```
+```Invalid managerId```
+```some user id's are invalid```
+```Invalid managerId```
 
 ## Demo
 Here is a working live demo :  Will  add
